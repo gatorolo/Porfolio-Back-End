@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /*@CrossOrigin(origins = "https://frontap-44095.web.app")*/
 @RestController
-@RequestMapping("/usuarios")
+@RequestMapping("/usuario")
 public class UsuariosController {
     private final UsuariosService usuarioService;
 

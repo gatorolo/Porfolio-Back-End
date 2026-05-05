@@ -13,10 +13,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 
 @Entity
+@Table(name = "usuario")
 public class Usuarios  implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

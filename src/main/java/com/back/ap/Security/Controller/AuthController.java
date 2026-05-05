@@ -83,4 +83,15 @@ public class AuthController {
 
         return new ResponseEntity(jwtDto, HttpStatus.OK);
     }
+
+    @PostMapping("/reset-password")
+    public ResponseEntity<?> resetPassword(@RequestBody LoginUsuario loginUsuario) {
+        if (!usuarioService.existsByNombreUsuario(loginUsuario.getNombreUsuario())) {
+            return new ResponseEntity(new Mensaje("Usuario no encontrado"), HttpStatus.NOT_FOUND);
+        }
+        Usuario usuario = usuarioService.getByNombreUsuario(loginUsuario.getNombreUsuario()).get();
+        usuario.setPassword(passwordEncoder.encode(loginUsuario.getPassword()));
+        usuarioService.save(usuario);
+        return new ResponseEntity(new Mensaje("Contraseña actualizada"), HttpStatus.OK);
+    }
 }
